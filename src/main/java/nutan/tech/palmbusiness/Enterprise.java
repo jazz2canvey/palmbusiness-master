@@ -117,8 +117,8 @@ public class Enterprise {
                     // execute the preparedstatement
                     preparedStmt.execute();
 
-                    callResultModelList.add(new CallResultModel(false, true, System.getProperty("jboss.server.data.dir") + " " + model.getEnterprise_logo()));
-//                    callResultModelList.add(new CallResultModel(false, true, enterpriseId));
+//                    callResultModelList.add(new CallResultModel(false, true, System.getProperty("jboss.server.data.dir") + " " + model.getEnterprise_logo()));
+                    callResultModelList.add(new CallResultModel(false, true, enterpriseId));
 
                     databaseFunctions.closeDBOperations(connection, preparedStmt, null);
 
