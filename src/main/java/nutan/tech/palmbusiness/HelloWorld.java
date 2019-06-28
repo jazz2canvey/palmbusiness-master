@@ -11,8 +11,7 @@ public class HelloWorld {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String isWorking() {
-        return System.getProperty("jboss.home.dir");
-        //return "Working!";
+        return "Working!";
     }
 
 }
