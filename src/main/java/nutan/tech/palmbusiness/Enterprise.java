@@ -247,7 +247,7 @@ public class Enterprise {
 
             preparedStmt.setString (1, taxModel.getEnterprise_id());
             preparedStmt.setInt (2, taxModel.getGst_scheme_id());
-            preparedStmt.setFloat(3, taxModel.getComposition_charge());
+            preparedStmt.setDouble(3, taxModel.getComposition_charge());
             preparedStmt.setString (4, taxModel.getGstin());
 
             // execute the preparedstatement
