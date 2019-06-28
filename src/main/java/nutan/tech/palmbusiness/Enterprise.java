@@ -9,6 +9,7 @@ import org.glassfish.jersey.media.multipart.FormDataParam;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.io.File;
 import java.io.InputStream;
 import java.sql.*;
 import java.text.SimpleDateFormat;
@@ -38,10 +39,15 @@ public class Enterprise {
 
         if (inputStream != null) {
 
+            String currentDirectory = System.getProperty("user.dir");
+            new File(currentDirectory + "/enterprise_logos").mkdirs();
+            directoryPath = currentDirectory + "/enterprise_logos/" + enterpriseId + ".png";
+            System.out.println("Path: " + directoryPath);
+
 //            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/" + enterpriseId + ".png";
 //            directoryPath = "/Users/jawedtahasildar/eclipse-workspace/palmbusiness/target/" + enterpriseId + ".png";
-//            directoryPath = "C:\\eclipse-workspace\\palmbusiness-master\\enterprise_logos\\" + enterpriseId + ".png";
-            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/palmbusiness-master/enterprise_logos/" + enterpriseId + ".png";
+//            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/palmbusiness-master/enterprise_logos/" + enterpriseId + ".png";
+
             APIUtilities.writeToFile(inputStream, directoryPath);
         } else {
 
@@ -112,7 +118,7 @@ public class Enterprise {
                     // execute the preparedstatement
                     preparedStmt.execute();
 
-                    callResultModelList.add(new CallResultModel(false, true, enterpriseId));
+                    callResultModelList.add(new CallResultModel(false, true, model.getEnterprise_logo()));
                     databaseFunctions.closeDBOperations(connection, preparedStmt, null);
 
                 } catch (SQLException e) {

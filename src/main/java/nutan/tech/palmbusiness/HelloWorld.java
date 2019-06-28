@@ -11,7 +11,6 @@ public class HelloWorld {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
     public String isWorking() {
-
         return "Working!";
     }
 
