@@ -12,8 +12,8 @@ public class DatabaseFunctions {
 
 		try{
 			Class.forName("com.mysql.jdbc.Driver");
-//			return DriverManager.getConnection("jdbc:mysql://jws-app-mysql:3306/db_palm_business","nutan","tech");
-			return DriverManager.getConnection("jdbc:mysql://localhost:3306/db_palm_business","nutan","tech");
+			return DriverManager.getConnection("jdbc:mysql://jws-app-mysql:3306/db_palm_business","nutan","tech");
+//			return DriverManager.getConnection("jdbc:mysql://localhost:3306/db_palm_business","nutan","tech");
 		}
 		catch(Exception e) {
 			e.printStackTrace();
