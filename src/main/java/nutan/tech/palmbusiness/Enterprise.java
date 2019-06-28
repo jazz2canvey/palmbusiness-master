@@ -40,7 +40,8 @@ public class Enterprise {
 
 //            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/" + enterpriseId + ".png";
 //            directoryPath = "/Users/jawedtahasildar/eclipse-workspace/palmbusiness/target/" + enterpriseId + ".png";
-            directoryPath = "C:\\eclipse-workspace\\palmbusiness-master\\enterprise_logos\\" + enterpriseId + ".png";
+//            directoryPath = "C:\\eclipse-workspace\\palmbusiness-master\\enterprise_logos\\" + enterpriseId + ".png";
+            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/palmbusiness-master/enterprise_logos/" + enterpriseId + ".png";
             APIUtilities.writeToFile(inputStream, directoryPath);
         } else {
 
