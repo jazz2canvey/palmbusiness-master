@@ -1,0 +1,41 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="JBossRemote" type="JBossConfiguration" factoryName="Remote" APPLICATION_SERVER_NAME="JBoss 7.1.1.Final" ALTERNATIVE_JRE_ENABLED="false">
+    <option name="LOCAL" value="false" />
+    <option name="BROWSER_ID" value="e5120d43-2c3f-47ef-9f26-65e539e05186" />
+    <option name="UPDATING_POLICY" value="hot-swap-classes" />
+    <deployment>
+      <artifact name="palmbusiness:war exploded">
+        <settings DEPLOYMENT_METHOD="Staging" />
+      </artifact>
+    </deployment>
+    <server-settings>
+      <data>
+        <option name="stagingRemotePath" value="" />
+        <option name="transportStagingTarget">
+          <TransportTarget>
+            <option name="id" value="3fdb44a0-dd1b-4dac-bbe6-0be51b90ce18" />
+            <id>3fdb44a0-dd1b-4dac-bbe6-0be51b90ce18</id>
+          </TransportTarget>
+        </option>
+        <transport-target>
+          <TransportTarget>
+            <option name="id" value="3fdb44a0-dd1b-4dac-bbe6-0be51b90ce18" />
+            <id>3fdb44a0-dd1b-4dac-bbe6-0be51b90ce18</id>
+          </TransportTarget>
+        </transport-target>
+        <staging-path />
+      </data>
+    </server-settings>
+    <predefined_log_file enabled="true" id="JBoss" />
+    <RunnerSettings RunnerId="Debug">
+      <option name="DEBUG_PORT" value="49360" />
+      <option name="LOCAL" value="false" />
+    </RunnerSettings>
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="BuildArtifacts" enabled="true">
+        <artifact name="palmbusiness:war exploded" />
+      </option>
+    </method>
+  </configuration>
+</component>
