@@ -52,7 +52,7 @@ public class PurchaseInvoice {
 						Connection connection = databaseFunctions.connect2DB();
 						PreparedStatement preparedStmt = null;
 						
-						String query = " INSERT INTO db_palm_business.purchase_invoices (purchase_invoice_id, enterprise_id, vendor_id, invoice_number, reference, status, entry_date, due_date, discount_type_code, taken_discount, total_amount, reverse_charge, description)"
+						String query = " INSERT INTO db_palm_business.purchase_invoice (purchase_invoice_id, enterprise_id, vendor_id, invoice_number, reference, status, entry_date, due_date, discount_type_code, taken_discount, total_amount, reverse_charge, description)"
 						        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 						try {
@@ -100,7 +100,7 @@ public class PurchaseInvoice {
 				
 				databaseFunctions = new DatabaseFunctions();
 				Connection connection = databaseFunctions.connect2DB();
-			    String getQuery = "SELECT * FROM db_palm_business.purchase_invoices WHERE db_palm_business.purchase_invoices.enterprise_id = '" + enterpriseId + "' AND db_palm_business.purchase_invoices.vendor_id = '" + vendorId + "' AND db_palm_business.purchase_invoices.invoice_number = '" + invoiceNumber + "'";
+			    String getQuery = "SELECT * FROM db_palm_business.purchase_invoice WHERE db_palm_business.purchase_invoice.enterprise_id = '" + enterpriseId + "' AND db_palm_business.purchase_invoice.vendor_id = '" + vendorId + "' AND db_palm_business.purchase_invoice.invoice_number = '" + invoiceNumber + "'";
 			    
 				try {
 					
@@ -148,7 +148,7 @@ public class PurchaseInvoice {
 		databaseFunctions = new DatabaseFunctions();
 		Connection connection = databaseFunctions.connect2DB();
 		
-		String query = "UPDATE db_palm_business.purchase_invoices SET invoice_number = ?, reference = ?, status = ?, entry_date = ?, due_date = ?, discount_type_code = ?, taken_discount = ?, total_amount = ?, reverse_charge = ?, description = ? WHERE db_palm_business.purchase_invoices.purchase_invoice_id = '" + purchaseInvoiceId + "'";
+		String query = "UPDATE db_palm_business.purchase_invoice SET invoice_number = ?, reference = ?, status = ?, entry_date = ?, due_date = ?, discount_type_code = ?, taken_discount = ?, total_amount = ?, reverse_charge = ?, description = ? WHERE db_palm_business.purchase_invoice.purchase_invoice_id = '" + purchaseInvoiceId + "'";
 		
 		PreparedStatement preparedStmt = null;
 		try {
@@ -191,7 +191,7 @@ public class PurchaseInvoice {
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		String query = "SELECT db_palm_business.purchase_invoices.purchase_invoice_id, db_palm_business.purchase_invoices.enterprise_id, db_palm_business.purchase_invoices.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name,  db_palm_business.purchase_invoices.invoice_number, db_palm_business.purchase_invoices.reference, db_palm_business.purchase_invoices.status, db_palm_business.purchase_invoices.entry_date, db_palm_business.purchase_invoices.due_date, db_palm_business.purchase_invoices.discount_type_code, db_palm_business.purchase_invoices.taken_discount, db_palm_business.purchase_invoices.total_amount, db_palm_business.purchase_invoices.reverse_charge, db_palm_business.purchase_invoices.description FROM db_palm_business.purchase_invoices LEFT JOIN db_palm_business.vendors ON db_palm_business.purchase_invoices.vendor_id = db_palm_business.vendors.vendor_id WHERE db_palm_business.purchase_invoices.enterprise_id = '" + enterpriseId + "' ORDER BY db_palm_business.purchase_invoices.entry_date";
+		String query = "SELECT db_palm_business.purchase_invoice.purchase_invoice_id, db_palm_business.purchase_invoice.enterprise_id, db_palm_business.purchase_invoice.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name,  db_palm_business.purchase_invoice.invoice_number, db_palm_business.purchase_invoice.reference, db_palm_business.purchase_invoice.status, db_palm_business.purchase_invoice.entry_date, db_palm_business.purchase_invoice.due_date, db_palm_business.purchase_invoice.discount_type_code, db_palm_business.purchase_invoice.taken_discount, db_palm_business.purchase_invoice.total_amount, db_palm_business.purchase_invoice.reverse_charge, db_palm_business.purchase_invoice.description FROM db_palm_business.purchase_invoice LEFT JOIN db_palm_business.vendors ON db_palm_business.purchase_invoice.vendor_id = db_palm_business.vendors.vendor_id WHERE db_palm_business.purchase_invoice.enterprise_id = '" + enterpriseId + "' ORDER BY db_palm_business.purchase_invoice.entry_date";
 
 	    try {
 
@@ -247,7 +247,7 @@ public class PurchaseInvoice {
 
         String purchasedItemsQuery = "SELECT db_palm_business.purchased_items.item_id, SUM(db_palm_business.purchased_items.quantity) AS total_purchased_qty, db_palm_business.purchased_items.quantity FROM db_palm_business.purchased_items WHERE db_palm_business.purchased_items.invoice_no = '" + invoiceNumber + "' GROUP BY item_id";
 
-		String query = "DELETE FROM db_palm_business.purchase_invoices WHERE db_palm_business.purchase_invoices.purchase_invoice_id = ?";
+		String query = "DELETE FROM db_palm_business.purchase_invoice WHERE db_palm_business.purchase_invoice.purchase_invoice_id = ?";
 
 		PreparedStatement preparedStmt = null;
 		try {
