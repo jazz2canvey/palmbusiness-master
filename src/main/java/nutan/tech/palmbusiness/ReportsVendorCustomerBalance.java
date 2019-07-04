@@ -70,7 +70,7 @@ public class ReportsVendorCustomerBalance {
         Statement statement = null;
         ResultSet resultSet = null;
 
-        String query = "SELECT db_palm_business.vendors.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name, SUM(DISTINCT db_palm_business.purchase_invoices.total_amount)as payable_amount, SUM(DISTINCT db_palm_business.payments_receipts.amount) AS paid_amount FROM db_palm_business.vendors LEFT JOIN db_palm_business.purchase_invoices ON db_palm_business.vendors.vendor_id = db_palm_business.purchase_invoices.vendor_id LEFT JOIN db_palm_business.payments_receipts ON db_palm_business.vendors.vendor_id = db_palm_business.payments_receipts.vendor_customer WHERE db_palm_business.vendors.enterprise_id = '" + enterpriseId + "' GROUP BY db_palm_business.vendors.vendor_id ORDER BY db_palm_business.vendors.last_modified";
+        String query = "SELECT db_palm_business.vendors.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name, SUM(DISTINCT db_palm_business.purchase_invoice.total_amount)as payable_amount, SUM(DISTINCT db_palm_business.payments_receipts.amount) AS paid_amount FROM db_palm_business.vendors LEFT JOIN db_palm_business.purchase_invoice ON db_palm_business.vendors.vendor_id = db_palm_business.purchase_invoice.vendor_id LEFT JOIN db_palm_business.payments_receipts ON db_palm_business.vendors.vendor_id = db_palm_business.payments_receipts.vendor_customer WHERE db_palm_business.vendors.enterprise_id = '" + enterpriseId + "' GROUP BY db_palm_business.vendors.vendor_id ORDER BY db_palm_business.vendors.last_modified";
 
         try {
 
