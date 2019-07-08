@@ -5,13 +5,13 @@ public class PurchaseInvoiceModel {
 	private int discount_type_code;
 	private double taken_discount, total_amount;
 	private String purchase_invoice_id, enterprise_id, vendor_id, vendor_name, enterprise_name, invoice_number, reference, entry_date, due_date, description;
-	private boolean status, reverse_charge;
+	private boolean status, reverse_charge, is_rate_including_gst;
 
 	public PurchaseInvoiceModel() {
 		
 	}
 
-	public PurchaseInvoiceModel(String purchase_invoice_id, String enterprise_id, String vendor_id, String enterprise_name, String invoice_number, String entry_date, String due_date, int discount_type_code, double taken_discount, double total_amount, String reference, boolean status, boolean reverse_charge, String description) {
+	public PurchaseInvoiceModel(String purchase_invoice_id, String enterprise_id, String vendor_id, String enterprise_name, String invoice_number, String entry_date, String due_date, int discount_type_code, double taken_discount, double total_amount, String reference, boolean status, boolean is_rate_including_gst, boolean reverse_charge, String description) {
 
 		this.purchase_invoice_id = purchase_invoice_id;
 		this.enterprise_id = enterprise_id;
@@ -25,11 +25,12 @@ public class PurchaseInvoiceModel {
 		this.total_amount = total_amount;
 		this.reference = reference;
 		this.status = status;
+		this.is_rate_including_gst = is_rate_including_gst;
 		this.reverse_charge = reverse_charge;
 		this.description = description;
 	}
 
-	public PurchaseInvoiceModel(String purchase_invoice_id, String vendor_id, String vendor_name, String invoice_number, String reference, boolean status, String entry_date, String due_date, int discount_type_code, double taken_discount, double total_amount, boolean reverse_charge, String description) {
+	public PurchaseInvoiceModel(String purchase_invoice_id, String vendor_id, String vendor_name, String invoice_number, String reference, boolean status, boolean is_rate_including_gst, String entry_date, String due_date, int discount_type_code, double taken_discount, double total_amount, boolean reverse_charge, String description) {
 
 		this.purchase_invoice_id = purchase_invoice_id;
 		this.vendor_id = vendor_id;
@@ -37,6 +38,7 @@ public class PurchaseInvoiceModel {
 		this.invoice_number = invoice_number;
 		this.reference = reference;
 		this.status = status;
+		this.is_rate_including_gst = is_rate_including_gst;
 		this.entry_date = entry_date;
 		this.due_date = due_date;
 		this.discount_type_code = discount_type_code;
@@ -157,6 +159,14 @@ public class PurchaseInvoiceModel {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public boolean isIs_rate_including_gst() {
+		return is_rate_including_gst;
+	}
+
+	public void setIs_rate_including_gst(boolean is_rate_including_gst) {
+		this.is_rate_including_gst = is_rate_including_gst;
 	}
 
 	public boolean isReverse_charge() {

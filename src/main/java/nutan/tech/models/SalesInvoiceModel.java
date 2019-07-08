@@ -4,19 +4,20 @@ public class SalesInvoiceModel {
 
 	private int discount_type_code;
 	private double given_discount, total_amount;
-	private boolean status;
+	private boolean status, is_rate_including_gst;
 	private String discount_type, sales_invoice_id, enterprise_id, customer_id, customer_name, invoice_number, reference, entry_date, due_date, billing_address, shipping_address, state_province, country, msg_to_customer;
 
 	public SalesInvoiceModel() {
 		
 	}
 
-	public SalesInvoiceModel(int discount_type_code, double given_discount, double total_amount, boolean status, String sales_invoice_id, String enterprise_id, String customer_id, String invoice_number, String reference, String entry_date, String due_date, String billing_address, String shipping_address, String state_province, String country, String msg_to_customer) {
+	public SalesInvoiceModel(int discount_type_code, double given_discount, double total_amount, boolean status, boolean is_rate_including_gst, String sales_invoice_id, String enterprise_id, String customer_id, String invoice_number, String reference, String entry_date, String due_date, String billing_address, String shipping_address, String state_province, String country, String msg_to_customer) {
 
 		this.discount_type_code = discount_type_code;
 		this.given_discount = given_discount;
 		this.total_amount = total_amount;
 		this.status = status;
+		this.is_rate_including_gst = is_rate_including_gst;
 		this.sales_invoice_id = sales_invoice_id;
 		this.enterprise_id = enterprise_id;
 		this.customer_id = customer_id;
@@ -31,12 +32,13 @@ public class SalesInvoiceModel {
 		this.msg_to_customer = msg_to_customer;
 	}
 
-	public SalesInvoiceModel(int discount_type_code, double given_discount, double total_amount, boolean status, String sales_invoice_id, String enterprise_id, String customer_id, String customer_name, String invoice_number, String reference, String entry_date, String due_date, String billing_address, String shipping_address, String state_province, String country, String msg_to_customer) {
+	public SalesInvoiceModel(int discount_type_code, double given_discount, double total_amount, boolean status, boolean is_rate_including_gst, String sales_invoice_id, String enterprise_id, String customer_id, String customer_name, String invoice_number, String reference, String entry_date, String due_date, String billing_address, String shipping_address, String state_province, String country, String msg_to_customer) {
 
 		this.discount_type_code = discount_type_code;
 		this.given_discount = given_discount;
 		this.total_amount = total_amount;
 		this.status = status;
+		this.is_rate_including_gst = is_rate_including_gst;
 		this.sales_invoice_id = sales_invoice_id;
 		this.enterprise_id = enterprise_id;
 		this.customer_id = customer_id;
@@ -52,11 +54,12 @@ public class SalesInvoiceModel {
 		this.msg_to_customer = msg_to_customer;
 	}
 
-	public SalesInvoiceModel(double given_discount, double total_amount, boolean status, String discount_type, String sales_invoice_id, String enterprise_id, String customer_id, String customer_name, String invoice_number, String reference, String entry_date, String due_date, String msg_to_customer) {
+	public SalesInvoiceModel(double given_discount, double total_amount, boolean status, boolean is_rate_including_gst, String discount_type, String sales_invoice_id, String enterprise_id, String customer_id, String customer_name, String invoice_number, String reference, String entry_date, String due_date, String msg_to_customer) {
 
 		this.given_discount = given_discount;
 		this.total_amount = total_amount;
 		this.status = status;
+		this.is_rate_including_gst = is_rate_including_gst;
 		this.discount_type = discount_type;
 		this.sales_invoice_id = sales_invoice_id;
 		this.enterprise_id = enterprise_id;
@@ -99,6 +102,14 @@ public class SalesInvoiceModel {
 
 	public void setStatus(boolean status) {
 		this.status = status;
+	}
+
+	public boolean isIs_rate_including_gst() {
+		return is_rate_including_gst;
+	}
+
+	public void setIs_rate_including_gst(boolean is_rate_including_gst) {
+		this.is_rate_including_gst = is_rate_including_gst;
 	}
 
 	public String getDiscount_type() {

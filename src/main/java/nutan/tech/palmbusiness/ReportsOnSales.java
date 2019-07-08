@@ -112,7 +112,7 @@ public class ReportsOnSales {
         ResultSet resultSet = null;
         Connection connection = databaseFunctions.connect2DB();
 
-        String query = "SELECT db_palm_business.sales_invoices.sales_invoice_id, db_palm_business.customers.customer_id, (CASE WHEN db_palm_business.customers.enterprise_name != '' THEN db_palm_business.customers.enterprise_name ELSE db_palm_business.customers.person_name END) AS customer_name, db_palm_business.sales_invoices.invoice_number, db_palm_business.sales_invoices.reference, db_palm_business.sales_invoices.status, db_palm_business.sales_invoices.entry_date, db_palm_business.sales_invoices.due_date, db_palm_business.discount_types.discount_type, db_palm_business.sales_invoices.given_discount, db_palm_business.sales_invoices.total_amount, db_palm_business.sales_invoices.msg_to_customer FROM db_palm_business.sales_invoices LEFT JOIN db_palm_business.customers ON db_palm_business.sales_invoices.customer_id = db_palm_business.customers.customer_id LEFT JOIN db_palm_business.discount_types ON db_palm_business.sales_invoices.discount_type_code = db_palm_business.discount_types.discount_type_code WHERE db_palm_business.sales_invoices.enterprise_id = '" + enterpriseId + "' AND db_palm_business.sales_invoices.customer_id = '" + customerId + "' ORDER BY db_palm_business.sales_invoices.entry_date";
+        String query = "SELECT db_palm_business.sales_invoices.sales_invoice_id, db_palm_business.customers.customer_id, (CASE WHEN db_palm_business.customers.enterprise_name != '' THEN db_palm_business.customers.enterprise_name ELSE db_palm_business.customers.person_name END) AS customer_name, db_palm_business.sales_invoices.invoice_number, db_palm_business.sales_invoices.reference, db_palm_business.sales_invoices.status, db_palm_business.sales_invoices.is_rate_including_gst, db_palm_business.sales_invoices.entry_date, db_palm_business.sales_invoices.due_date, db_palm_business.discount_types.discount_type, db_palm_business.sales_invoices.given_discount, db_palm_business.sales_invoices.total_amount, db_palm_business.sales_invoices.msg_to_customer FROM db_palm_business.sales_invoices LEFT JOIN db_palm_business.customers ON db_palm_business.sales_invoices.customer_id = db_palm_business.customers.customer_id LEFT JOIN db_palm_business.discount_types ON db_palm_business.sales_invoices.discount_type_code = db_palm_business.discount_types.discount_type_code WHERE db_palm_business.sales_invoices.enterprise_id = '" + enterpriseId + "' AND db_palm_business.sales_invoices.customer_id = '" + customerId + "' ORDER BY db_palm_business.sales_invoices.entry_date";
 
         try {
 
@@ -126,6 +126,7 @@ public class ReportsOnSales {
                 String invoiceNumber = resultSet.getString("invoice_number");
                 String reference = resultSet.getString("reference");
                 boolean status = resultSet.getBoolean("status");
+                boolean isRateIncludingGst = resultSet.getBoolean("is_rate_including_gst");
                 String entryDate = resultSet.getString("entry_date");
                 String dueDate = resultSet.getString("due_date");
                 String discountType = resultSet.getString("discount_type");
@@ -133,7 +134,7 @@ public class ReportsOnSales {
                 double totalAmount = resultSet.getDouble("total_amount");
                 String msgToCustomer = resultSet.getString("msg_to_customer");
 
-                SalesInvoiceModel model = new SalesInvoiceModel(givenDiscount, totalAmount, status, discountType, saleInvoiceId, enterpriseId, customerId, customerName, invoiceNumber, reference, entryDate, dueDate, msgToCustomer);
+                SalesInvoiceModel model = new SalesInvoiceModel(givenDiscount, totalAmount, status, isRateIncludingGst, discountType, saleInvoiceId, enterpriseId, customerId, customerName, invoiceNumber, reference, entryDate, dueDate, msgToCustomer);
 
                 salesInvoiceList.add(model);
             }

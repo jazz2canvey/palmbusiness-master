@@ -52,13 +52,12 @@ public class PurchaseInvoice {
 						Connection connection = databaseFunctions.connect2DB();
 						PreparedStatement preparedStmt = null;
 						
-						String query = " INSERT INTO db_palm_business.purchase_invoice (purchase_invoice_id, enterprise_id, vendor_id, invoice_number, reference, status, entry_date, due_date, discount_type_code, taken_discount, total_amount, reverse_charge, description)"
-						        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+						String query = " INSERT INTO db_palm_business.purchase_invoice (purchase_invoice_id, enterprise_id, vendor_id, invoice_number, reference, status, is_rate_including_gst, entry_date, due_date, discount_type_code, taken_discount, total_amount, reverse_charge, description)"
+						        + " VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 						try {
 							preparedStmt = connection.prepareStatement(query);
 							connection.setAutoCommit(false);
-
 
 							for (PurchaseInvoiceModel purchaseInvoiceModel : purchaseInvoicesModelList) {
 
@@ -69,13 +68,14 @@ public class PurchaseInvoice {
 								preparedStmt.setString(4, purchaseInvoiceModel.getInvoice_number());
 								preparedStmt.setString(5, purchaseInvoiceModel.getReference());
 								preparedStmt.setBoolean(6, purchaseInvoiceModel.isStatus());
-								preparedStmt.setString(7, purchaseInvoiceModel.getEntry_date());
-								preparedStmt.setString(8, purchaseInvoiceModel.getDue_date());
-								preparedStmt.setInt(9, purchaseInvoiceModel.getDiscount_type_code());
-								preparedStmt.setDouble(10, purchaseInvoiceModel.getTaken_discount());
-								preparedStmt.setDouble(11, purchaseInvoiceModel.getTotal_amount());
-								preparedStmt.setBoolean(12, purchaseInvoiceModel.isReverse_charge());
-								preparedStmt.setString(13, purchaseInvoiceModel.getDescription());
+								preparedStmt.setBoolean(7, purchaseInvoiceModel.isIs_rate_including_gst());
+								preparedStmt.setString(8, purchaseInvoiceModel.getEntry_date());
+								preparedStmt.setString(9, purchaseInvoiceModel.getDue_date());
+								preparedStmt.setInt(10, purchaseInvoiceModel.getDiscount_type_code());
+								preparedStmt.setDouble(11, purchaseInvoiceModel.getTaken_discount());
+								preparedStmt.setDouble(12, purchaseInvoiceModel.getTotal_amount());
+								preparedStmt.setBoolean(13, purchaseInvoiceModel.isReverse_charge());
+								preparedStmt.setString(14, purchaseInvoiceModel.getDescription());
 								preparedStmt.addBatch();
 							}    
 							
@@ -191,7 +191,7 @@ public class PurchaseInvoice {
 		Statement statement = null;
 		ResultSet resultSet = null;
 
-		String query = "SELECT db_palm_business.purchase_invoice.purchase_invoice_id, db_palm_business.purchase_invoice.enterprise_id, db_palm_business.purchase_invoice.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name,  db_palm_business.purchase_invoice.invoice_number, db_palm_business.purchase_invoice.reference, db_palm_business.purchase_invoice.status, db_palm_business.purchase_invoice.entry_date, db_palm_business.purchase_invoice.due_date, db_palm_business.purchase_invoice.discount_type_code, db_palm_business.purchase_invoice.taken_discount, db_palm_business.purchase_invoice.total_amount, db_palm_business.purchase_invoice.reverse_charge, db_palm_business.purchase_invoice.description FROM db_palm_business.purchase_invoice LEFT JOIN db_palm_business.vendors ON db_palm_business.purchase_invoice.vendor_id = db_palm_business.vendors.vendor_id WHERE db_palm_business.purchase_invoice.enterprise_id = '" + enterpriseId + "' ORDER BY db_palm_business.purchase_invoice.entry_date";
+		String query = "SELECT db_palm_business.purchase_invoice.purchase_invoice_id, db_palm_business.purchase_invoice.enterprise_id, db_palm_business.purchase_invoice.vendor_id, db_palm_business.vendors.enterprise_name AS vendor_name,  db_palm_business.purchase_invoice.invoice_number, db_palm_business.purchase_invoice.reference, db_palm_business.purchase_invoice.status, db_palm_business.purchase_invoice.is_rate_including_gst, db_palm_business.purchase_invoice.entry_date, db_palm_business.purchase_invoice.due_date, db_palm_business.purchase_invoice.discount_type_code, db_palm_business.purchase_invoice.taken_discount, db_palm_business.purchase_invoice.total_amount, db_palm_business.purchase_invoice.reverse_charge, db_palm_business.purchase_invoice.description FROM db_palm_business.purchase_invoice LEFT JOIN db_palm_business.vendors ON db_palm_business.purchase_invoice.vendor_id = db_palm_business.vendors.vendor_id WHERE db_palm_business.purchase_invoice.enterprise_id = '" + enterpriseId + "' ORDER BY db_palm_business.purchase_invoice.entry_date";
 
 	    try {
 
@@ -208,6 +208,7 @@ public class PurchaseInvoice {
 					String invoiceNumber = resultSet.getString("invoice_number");
 					String reference = resultSet.getString("reference");
 					boolean status = Boolean.parseBoolean(resultSet.getString("status"));
+					boolean isRateIncludingGST = resultSet.getBoolean("is_rate_including_gst");
 					String entryDate = resultSet.getString("entry_date");
 					String dueDate = resultSet.getString("due_date");
 					int discountTypeCode = Integer.parseInt(resultSet.getString("discount_type_code"));
@@ -216,7 +217,7 @@ public class PurchaseInvoice {
 					boolean reverseCharge = Boolean.parseBoolean(resultSet.getString("reverse_charge"));
 					String description = resultSet.getString("description");
 
-					PurchaseInvoiceModel model = new PurchaseInvoiceModel(purchaseInvoiceId, vendorId, vendorName, invoiceNumber, reference, status, entryDate, dueDate, discountTypeCode, takenDiscount, totalAmount, reverseCharge, description);
+					PurchaseInvoiceModel model = new PurchaseInvoiceModel(purchaseInvoiceId, vendorId, vendorName, invoiceNumber, reference, status, isRateIncludingGST, entryDate, dueDate, discountTypeCode, takenDiscount, totalAmount, reverseCharge, description);
 					purchaseInvoiceList.add(model);
 				}
 
