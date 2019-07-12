@@ -21,7 +21,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Path("/customer_type")
 public class CustomerType {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

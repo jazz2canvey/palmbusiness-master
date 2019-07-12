@@ -18,7 +18,7 @@ import java.util.List;
 @Path("/sales_report")
 public class ReportsOnSales {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("/sales_by_customer/{enterprise_id}/{start_range}/{end_range}")

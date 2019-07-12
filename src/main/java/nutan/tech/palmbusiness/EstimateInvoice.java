@@ -20,7 +20,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class EstimateInvoice {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @POST
     @Path("{enterprise_id}/{invoice_number}")

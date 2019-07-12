@@ -19,7 +19,7 @@ import java.util.List;
 @Produces(MediaType.APPLICATION_JSON)
 public class DuePayment {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("/payment/{enterprise_id}")

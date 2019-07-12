@@ -17,7 +17,7 @@ import java.util.List;
 @Path("/cash_accounts")
 public class CashAccounts {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     private boolean isExist = false;
 

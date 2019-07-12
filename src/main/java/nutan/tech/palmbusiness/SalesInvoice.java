@@ -28,7 +28,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Produces(MediaType.APPLICATION_JSON)
 public class SalesInvoice {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Path("{enterprise_id}/{invoice_number}")

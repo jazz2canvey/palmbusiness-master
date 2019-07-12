@@ -2,9 +2,9 @@ package nutan.tech.models;
 
 public class ExpenseItemsModel {
 
-	int expense_item_id, item_type;
-	float spent_price, sgst, cgst, igst;
-	String item_name, hsn_o_sac;
+	private int expense_item_id, item_type;
+	private float spent_price, sgst, cgst, igst;
+	private String item_name, hsn_o_sac;
 	
 	public ExpenseItemsModel() {
 		

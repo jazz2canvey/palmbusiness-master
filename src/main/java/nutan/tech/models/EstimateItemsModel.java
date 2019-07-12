@@ -6,8 +6,6 @@ public class EstimateItemsModel {
     private double rate_per_item, quantity, total_amount;
     private String item_id, item_name, item_type, enterprise_id, customer_id, invoice_number, hsn_o_sac;
 
-
-
     public EstimateItemsModel() {
 
     }

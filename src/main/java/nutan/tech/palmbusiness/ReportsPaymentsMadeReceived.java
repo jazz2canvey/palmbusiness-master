@@ -17,7 +17,7 @@ import java.util.List;
 @Path("/payments_made_received")
 public class ReportsPaymentsMadeReceived {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("/payments_made/{enterprise_id}/{start_range}/{end_range}")

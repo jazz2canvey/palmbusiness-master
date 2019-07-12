@@ -30,7 +30,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Produces(MediaType.APPLICATION_JSON)
 public class Items {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Path("/create_item")

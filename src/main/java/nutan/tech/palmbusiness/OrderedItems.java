@@ -17,7 +17,7 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class OrderedItems {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @POST
     public List<CallResultModel> newOrderedItem(OrderedItemsListModel orderedItemsList) {

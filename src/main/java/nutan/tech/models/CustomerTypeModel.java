@@ -2,8 +2,8 @@ package nutan.tech.models;
 
 public class CustomerTypeModel {
 
-	int customer_type_id, customer_type_code;
-	String customer_type;
+	private int customer_type_id, customer_type_code;
+	private String customer_type;
 	
 	public CustomerTypeModel() {
 		

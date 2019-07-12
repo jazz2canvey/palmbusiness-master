@@ -31,7 +31,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Produces(MediaType.APPLICATION_JSON)
 public class Vendor {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

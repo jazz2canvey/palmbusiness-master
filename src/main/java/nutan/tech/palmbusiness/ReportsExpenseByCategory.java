@@ -16,7 +16,7 @@ import java.util.List;
 @Path("/expense_by_category")
 public class ReportsExpenseByCategory {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("{enterprise_id}/{start_range}/{end_range}")

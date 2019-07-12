@@ -16,7 +16,7 @@ import java.util.List;
 @Path("/contra_voucher_report")
 public class ReportsContraVochers {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("/{enterprise_id}/{contra_voucher_type}/{start_range}/{end_range}")

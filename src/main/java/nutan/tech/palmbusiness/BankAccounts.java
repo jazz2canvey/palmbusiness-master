@@ -13,7 +13,7 @@ import java.util.*;
 @Path("/bank_accounts")
 public class BankAccounts {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     private BankAccountModel model = new BankAccountModel(false, "Bank Account Not Exist");
 

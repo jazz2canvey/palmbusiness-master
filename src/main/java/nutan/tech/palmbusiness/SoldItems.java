@@ -18,7 +18,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Consumes(MediaType.APPLICATION_JSON)
 public class SoldItems {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	public List<CallResultModel> newSoldItem(SoldItemsListModel soldItemsList) {

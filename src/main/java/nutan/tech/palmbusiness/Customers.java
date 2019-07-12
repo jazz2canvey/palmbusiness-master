@@ -29,7 +29,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Path("/customer")
 public class Customers {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Path("{enterprise_id}")

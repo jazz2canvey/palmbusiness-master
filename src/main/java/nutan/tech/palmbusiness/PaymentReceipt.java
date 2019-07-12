@@ -19,7 +19,7 @@ import nutan.tech.utilities.DatabaseFunctions;
 @Path("/payment_receipt")
 public class PaymentReceipt {
 
-	DatabaseFunctions databaseFunctions;
+	private DatabaseFunctions databaseFunctions;
 	
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)

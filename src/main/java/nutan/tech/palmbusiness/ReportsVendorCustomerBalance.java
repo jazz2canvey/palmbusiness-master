@@ -17,7 +17,7 @@ import java.util.List;
 @Path("/vendor_customer_balance_report")
 public class ReportsVendorCustomerBalance {
 
-    DatabaseFunctions databaseFunctions;
+    private DatabaseFunctions databaseFunctions;
 
     @GET
     @Path("/customer_balance/{enterprise_id}")
