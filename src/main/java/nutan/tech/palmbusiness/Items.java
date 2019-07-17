@@ -96,8 +96,8 @@ public class Items {
 							preparedStmt.setString(1, itemId);
 							preparedStmt.setString (2, createItemModel.getEnterprise_id());
 							preparedStmt.setString (3, createItemModel.getItem_name());
-							preparedStmt.setString(4, createItemModel.getMeasurement());;
-							preparedStmt.setInt (5, createItemModel.getItem_type_code());
+							preparedStmt.setString(4, createItemModel.getMeasurement());
+                            preparedStmt.setInt (5, createItemModel.getItem_type_code());
 							preparedStmt.setString (6, createItemModel.getItem_description());
 
 							// execute the preparedstatement

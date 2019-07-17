@@ -26,9 +26,8 @@ public class Enterprise {
 
     @POST
     public List<CallResultModel> registerEnterprise(@FormDataParam("logo") InputStream inputStream,
-                                                    @FormDataParam("logo") FormDataContentDisposition contentDisposition,
-                                                    @FormDataParam("enterpriseModel") FormDataBodyPart jsonData) {
-
+        @FormDataParam("logo") FormDataContentDisposition contentDisposition,
+        @FormDataParam("enterpriseModel") FormDataBodyPart jsonData) {
         final List<CallResultModel> callResultModelList = new ArrayList<>();
 
         jsonData.setMediaType(MediaType.APPLICATION_JSON_TYPE);
@@ -39,15 +38,10 @@ public class Enterprise {
 
         if (inputStream != null) {
 
-            String currentDirectory = System.getProperty("user.dir");
-            new File(currentDirectory + "/enterprise_logos").mkdirs();
-            directoryPath = currentDirectory + "/enterprise_logos/" + enterpriseId + ".png";
-
-//            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/" + enterpriseId + ".png";
-//            directoryPath = "/Users/jawedtahasildar/eclipse-workspace/palmbusiness/target/" + enterpriseId + ".png";
-//            directoryPath = "http://jws-app-palmbusiness.1d35.starter-us-east-1.openshiftapps.com/palmbusiness-master/enterprise_logos/" + enterpriseId + ".png";
+            directoryPath = "C:/Inetpub/vhosts/palmbusiness.xyz/httpdocs/enterprise_logos/" + enterpriseId + ".png";
 
             APIUtilities.writeToFile(inputStream, directoryPath);
+            directoryPath = "http://palmbusiness.xyz/enterprise_logos/" + enterpriseId + ".png";
         } else {
 
             directoryPath = enterpriseModel.getEnterprise_logo();
@@ -387,7 +381,7 @@ public class Enterprise {
         String[] givenFiscal = enterpriseModel.getFiscal_year().split(" ");
         int monthIndex = Arrays.asList(APIUtilities.months).indexOf(givenFiscal[1]);
 
-        enterpriseModel.setFiscal_year("0000" + "-" + String.valueOf(monthIndex + 1) + "-" + givenFiscal[0]);
+        enterpriseModel.setFiscal_year("0000" + "-" + (monthIndex + 1) + "-" + givenFiscal[0]);
         enterpriseModel.setEnterprise_logo(directoryPath);
 
         EnterpriseModel model = null;
